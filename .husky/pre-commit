@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+# Assuming the intention is to dynamically get the directory name of the current script
+# and then source a script named husky.sh located in a subdirectory named _ relative to that path.
+
+# Correctly use dirname with the command substitution
+DIR="$(dirname -- "$0")"
+. "$DIR/_/husky.sh"
+
+# Execute lint-staged and then run the build script
+npx lint-staged && npm run build
