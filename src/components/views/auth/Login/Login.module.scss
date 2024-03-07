@@ -14,24 +14,8 @@
     padding: 20px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 5);
     margin-bottom: 20px;
-    &_item {
-      display: flex;
-      flex-direction: column;
-      margin: 20px 0;
-      &_input {
-        padding: 10px;
-        background-color: #eee;
-        margin-top: 5px;
-        border: none;
-        outline: none;
-      }
-    }
     &_button {
-      padding: 10px;
-      background-color: black;
-      color: #fff;
       width: 100%;
-      border: none;
       cursor: pointer;
     }
     &_error {
@@ -45,19 +29,14 @@
     &_other {
       width: 100%;
       &_button {
-        display: flex;
-        padding: 15px;
-        background-color: black;
-        color: #fff;
         width: 100%;
-        border: none;
         cursor: pointer;
         justify-content: center;
         align-items: center;
         gap: 5px;
       }
       i {
-        font-size: 20px;
+        font-size: 15px;
       }
     }
   }

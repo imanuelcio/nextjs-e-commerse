@@ -3,6 +3,8 @@ import styles from "./Login.module.scss";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 const LoginView = () => {
   const { push, query } = useRouter();
   const callbackUrl: any = query.callbackUrl || "/auth/awal";
@@ -40,38 +42,36 @@ const LoginView = () => {
         {error && <p className={styles.login_form_error}>{error}</p>}
         <div className={styles.login_form}>
           <form onSubmit={handleSubmit}>
-            <div className={styles.login_form_item}>
-              <label htmlFor="email">Email</label>
-              <input
-                name="email"
-                id="email"
-                className={styles.login_form_item_input}
-                type="text"
-              />
-            </div>
-
-            <div className={styles.login_form_item}>
-              <label htmlFor="password">Password</label>
-              <input
-                name="password"
-                id="password"
-                className={styles.login_form_item_input}
-                type="password"
-              />
-            </div>
-            <button type="submit" className={styles.login_form_button}>
+            <Input label="Email" name="email" type="text" />
+            <Input label="Password" name="password" type="password" />
+            <Button
+              type="submit"
+              variant="primary"
+              className={styles.login_form_button}
+            >
+              {loading ? "Loading..." : "Login with Email"}
+            </Button>
+            {/* <button type="submit" className={styles.login_form_button}>
               {loading ? "Loading..." : "Login"}
-            </button>
+            </button> */}
           </form>
           <hr className={styles.login_form_devider} />
           <div className={styles.login_form_other}>
-            <button
+            <Button
+              type="button"
+              variant="primary"
+              onClick={() => signIn("google", { callbackUrl, redirect: false })}
+              className={styles.login_form_other_button}
+            >
+              <i className="bx bxl-google" /> Login With Google
+            </Button>
+            {/* <button
               type="button"
               onClick={() => signIn("google", { callbackUrl, redirect: false })}
               className={styles.login_form_other_button}
             >
               <i className="bx bxl-google" /> Login With Google
-            </button>
+            </button> */}
           </div>
         </div>
         <p>

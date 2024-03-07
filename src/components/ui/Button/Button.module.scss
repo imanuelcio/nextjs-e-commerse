@@ -1,0 +1,14 @@
+.button {
+  display: flex;
+  padding: 15px 30px;
+
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.primary {
+  background-color: black;
+  color: #fff;
+}
