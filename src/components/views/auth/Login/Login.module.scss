@@ -38,6 +38,28 @@
       color: red;
       margin-bottom: 10px;
     }
+    &_devider {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    &_other {
+      width: 100%;
+      &_button {
+        display: flex;
+        padding: 15px;
+        background-color: black;
+        color: #fff;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      i {
+        font-size: 20px;
+      }
+    }
   }
   &_link {
     color: rgb(41, 193, 216);

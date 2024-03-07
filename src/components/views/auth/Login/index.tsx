@@ -32,6 +32,7 @@ const LoginView = () => {
       setError("Invalid email or password");
     }
   };
+
   return (
     <>
       <div className={styles.login}>
@@ -62,6 +63,16 @@ const LoginView = () => {
               {loading ? "Loading..." : "Login"}
             </button>
           </form>
+          <hr className={styles.login_form_devider} />
+          <div className={styles.login_form_other}>
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl, redirect: false })}
+              className={styles.login_form_other_button}
+            >
+              <i className="bx bxl-google" /> Login With Google
+            </button>
+          </div>
         </div>
         <p>
           Don{"'"} Have an account? Sign Up{" "}
