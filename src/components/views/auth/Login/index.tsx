@@ -5,6 +5,7 @@ import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import AuthLayout from "@/components/layouts/AuthLayout";
 const LoginView = () => {
   const { push, query } = useRouter();
   const callbackUrl: any = query.callbackUrl || "/auth/awal";
@@ -37,7 +38,36 @@ const LoginView = () => {
 
   return (
     <>
-      <div className={styles.login}>
+      <AuthLayout
+        link="/auth/register"
+        linkText="Don't have an account? Sign up "
+        title="Login"
+        error={error}
+      >
+        <form onSubmit={handleSubmit}>
+          <Input label="Email" name="email" type="text" />
+          <Input label="Password" name="password" type="password" />
+          <Button
+            type="submit"
+            variant="primary"
+            className={styles.login_button}
+          >
+            {loading ? "Loading..." : "Login with Email"}
+          </Button>
+        </form>
+        <hr className={styles.login_devider} />
+        <div className={styles.login_other}>
+          <Button
+            type="button"
+            variant="primary"
+            onClick={() => signIn("google", { callbackUrl, redirect: false })}
+            className={styles.login_other_button}
+          >
+            <i className="bx bxl-google" /> Login With Google
+          </Button>
+        </div>
+      </AuthLayout>
+      {/* <div className={styles.login}>
         <h1 className={styles.login_title}>Login</h1>
         {error && <p className={styles.login_form_error}>{error}</p>}
         <div className={styles.login_form}>
@@ -51,9 +81,6 @@ const LoginView = () => {
             >
               {loading ? "Loading..." : "Login with Email"}
             </Button>
-            {/* <button type="submit" className={styles.login_form_button}>
-              {loading ? "Loading..." : "Login"}
-            </button> */}
           </form>
           <hr className={styles.login_form_devider} />
           <div className={styles.login_form_other}>
@@ -65,13 +92,6 @@ const LoginView = () => {
             >
               <i className="bx bxl-google" /> Login With Google
             </Button>
-            {/* <button
-              type="button"
-              onClick={() => signIn("google", { callbackUrl, redirect: false })}
-              className={styles.login_form_other_button}
-            >
-              <i className="bx bxl-google" /> Login With Google
-            </button> */}
           </div>
         </div>
         <p>
@@ -80,7 +100,7 @@ const LoginView = () => {
             here
           </Link>
         </p>
-      </div>
+      </div> */}
     </>
   );
 };
