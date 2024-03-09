@@ -1,0 +1,47 @@
+.sidebar {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  width: 300px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__top {
+    &__title {
+      margin-bottom: 40px;
+      font-size: 25px;
+      text-align: center;
+    }
+    &__lists {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      &__item {
+        cursor: pointer;
+        padding: 5px 15px;
+        align-items: center;
+        display: flex;
+        gap: 10px;
+        font-size: 18px;
+        &__icon {
+          font-size: 32px;
+        }
+        &:hover {
+          background-color: white;
+          color: black;
+          transition: 0.3s;
+        }
+        &__active {
+          background-color: white;
+          color: black;
+        }
+      }
+    }
+  }
+  &__bottom {
+    &__logout {
+      width: 100%;
+    }
+  }
+}

@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 import AuthLayout from "@/components/layouts/AuthLayout";
 const LoginView = () => {
   const { push, query } = useRouter();
-  const callbackUrl: any = query.callbackUrl || "/auth/awal";
+  const callbackUrl: any = query.callbackUrl || "/";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -67,40 +67,6 @@ const LoginView = () => {
           </Button>
         </div>
       </AuthLayout>
-      {/* <div className={styles.login}>
-        <h1 className={styles.login_title}>Login</h1>
-        {error && <p className={styles.login_form_error}>{error}</p>}
-        <div className={styles.login_form}>
-          <form onSubmit={handleSubmit}>
-            <Input label="Email" name="email" type="text" />
-            <Input label="Password" name="password" type="password" />
-            <Button
-              type="submit"
-              variant="primary"
-              className={styles.login_form_button}
-            >
-              {loading ? "Loading..." : "Login with Email"}
-            </Button>
-          </form>
-          <hr className={styles.login_form_devider} />
-          <div className={styles.login_form_other}>
-            <Button
-              type="button"
-              variant="primary"
-              onClick={() => signIn("google", { callbackUrl, redirect: false })}
-              className={styles.login_form_other_button}
-            >
-              <i className="bx bxl-google" /> Login With Google
-            </Button>
-          </div>
-        </div>
-        <p>
-          Don{"'"} Have an account? Sign Up{" "}
-          <Link className={styles.login_link} href={"/auth/register"}>
-            here
-          </Link>
-        </p>
-      </div> */}
     </>
   );
 };

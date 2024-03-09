@@ -18,7 +18,7 @@ export async function signUp(
     callback(false);
     console.log("email already exist");
   } else {
-    if (userData.role) {
+    if (!userData.role) {
       userData.role = "member";
     }
     userData.password = await bcrypt.hash(userData.password, 10);

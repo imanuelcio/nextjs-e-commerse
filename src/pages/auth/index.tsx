@@ -1,11 +1,11 @@
 import { useSession } from "next-auth/react";
 import React from "react";
 
-const Awal = () => {
+const HalamanAwal = () => {
   const { data } = useSession();
   console.log(data);
 
-  return <div>awal</div>;
+  return <div> HalamanAwal</div>;
 };
 
-export default Awal;
+export default HalamanAwal;
