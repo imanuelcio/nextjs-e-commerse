@@ -17,14 +17,19 @@ const listSidebarItem = [
     url: "/admin/products",
     icon: "bx-shopping-bag",
   },
+  {
+    title: "Users",
+    url: "/admin/users",
+    icon: "bx-group",
+  },
 ];
 const AdminLayout = (props: PropsTypes) => {
   const { children } = props;
   return (
     <>
-      <div className="">
+      <div className={styles.admin}>
         <Sidebar lists={listSidebarItem} />
-        {children}
+        <div className={styles.admin_main}>{children}</div>
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import WithAuth from "./middleware/withAuth";
 
-function mainMiddleware() {
+export function mainMiddleware() {
   const res = NextResponse.next();
   return res;
 }
