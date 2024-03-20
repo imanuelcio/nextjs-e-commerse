@@ -23,6 +23,21 @@
       display: flex;
       justify-content: center;
       gap: 10px;
+      &_edit {
+        background-color: rgb(219, 233, 27);
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 5px;
+        i {
+          color: black;
+        }
+      }
+      &_delete {
+        background-color: rgb(228, 45, 45);
+        padding: 15px;
+        font-size: 15px;
+        border-radius: 5px;
+      }
     }
   }
 }

@@ -7,6 +7,8 @@ import {
   query,
   where,
   addDoc,
+  updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import app from "./init";
 
@@ -55,5 +57,36 @@ export async function addData(
     })
     .catch((err) => {
       console.log(err);
+    });
+}
+
+export async function updateData(
+  collectionName: string,
+  id: string,
+  data: any,
+  callback: Function
+) {
+  const docRef = doc(firestore, collectionName, id);
+  await updateDoc(docRef, data)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      console.log(false);
+    });
+}
+
+export async function deleteData(
+  collectionName: string,
+  id: string,
+  callback: Function
+) {
+  const docRef = doc(firestore, collectionName, id);
+  await deleteDoc(docRef)
+    .then(() => {
+      callback(true);
+    })
+    .catch(() => {
+      console.log(false);
     });
 }
