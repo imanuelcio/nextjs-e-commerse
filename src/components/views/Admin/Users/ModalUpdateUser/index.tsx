@@ -3,6 +3,7 @@ import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
 import { userServices } from "@/services/user";
+import { useSession } from "next-auth/react";
 import React, { FormEvent, useState } from "react";
 
 type PropsTypes = {
@@ -13,6 +14,8 @@ type PropsTypes = {
 
 const ModalUpdateUser = (props: PropsTypes) => {
   const { UpdatedUser, setUpdatedUser, setUsersData } = props;
+  const session: any = useSession();
+  console.log(session);
 
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -22,7 +25,11 @@ const ModalUpdateUser = (props: PropsTypes) => {
     const data = {
       role: form.role.value,
     };
-    const result = await userServices.updateUsers(data, UpdatedUser.id);
+    const result = await userServices.updateUsers(
+      data,
+      UpdatedUser.id,
+      session.data?.accessToken
+    );
     if (result.status === 200) {
       setLoading(false);
       setUpdatedUser({});
