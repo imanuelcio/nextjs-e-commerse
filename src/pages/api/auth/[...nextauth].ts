@@ -48,19 +48,25 @@ export const authOption: NextAuthOptions = {
         token.email = user.email;
         token.fullname = user.fullname;
         token.phone = user.phone;
+        token.image = user.image;
         token.role = user.role;
+        token.id = user.id;
       }
       if (account?.provider === "google") {
         const data = {
+          id: profile.id,
           fullname: profile.name,
           email: profile.email,
+          image: profile.picture,
           type: "google",
         };
 
         await loginWithGoogle(data, (data: any) => {
-          (token.email = data.email),
+          (token.id = data.id),
             (token.fullname = data.fullname),
-            (token.role = data.role);
+            (token.email = data.email),
+            (token.role = data.role),
+            (token.image = data.image);
         });
       }
 
@@ -78,6 +84,13 @@ export const authOption: NextAuthOptions = {
       }
       if ("role" in token) {
         session.user.role = token.role;
+      }
+      if ("image" in token) {
+        session.user.image = token.image;
+      }
+
+      if ("id" in token) {
+        session.user.id = token.id;
       }
 
       const accessToken = jwt.sign(token, process.env.NEXTAUTH_SECRET || "", {

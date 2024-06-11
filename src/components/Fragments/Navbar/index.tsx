@@ -4,6 +4,7 @@ const Navbar = () => {
   const { data } = useSession();
   return (
     <div className={style.navbar}>
+      <h1 className={style.navbar_title}>Wedding organizer</h1>
       <button
         className={style.navbar_button}
         onClick={() => (data ? signOut() : signIn())}

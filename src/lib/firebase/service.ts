@@ -52,8 +52,8 @@ export async function addData(
   callback: Function
 ) {
   await addDoc(collection(firestore, collectionName), data)
-    .then(() => {
-      callback(true);
+    .then((res) => {
+      callback(true, res);
     })
     .catch((err) => {
       console.log(err);
@@ -71,8 +71,9 @@ export async function updateData(
     .then(() => {
       callback(true);
     })
-    .catch(() => {
-      console.log(false);
+    .catch((err) => {
+      console.log("update data error on :", err);
+      callback(false);
     });
 }
 
@@ -86,7 +87,8 @@ export async function deleteData(
     .then(() => {
       callback(true);
     })
-    .catch(() => {
-      console.log(false);
+    .catch((err) => {
+      callback(false);
+      console.log("Delete data error on :", err);
     });
 }

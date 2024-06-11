@@ -27,7 +27,6 @@ const RegisterView = () => {
     } else {
       setLoading(false);
       setError("Email Already Exist");
-      console.log("error");
     }
   };
 

@@ -41,9 +41,11 @@ export async function signIn(email: string) {
 
 export async function loginWithGoogle(
   data: {
+    id: string;
     email: string;
     fullname?: string;
     phone?: string;
+    image?: string;
     role?: string;
     createdAt?: Date;
     updatedAt?: Date;
@@ -60,8 +62,9 @@ export async function loginWithGoogle(
     data.createdAt = new Date();
     data.updatedAt = new Date();
     data.password = "";
-    await addData("users", data, (result: boolean) => {
-      if (result) {
+    await addData("users", data, (res: any, status: boolean) => {
+      data.id = res.path.replace("users/", "");
+      if (status) {
         callback(data);
       }
     });

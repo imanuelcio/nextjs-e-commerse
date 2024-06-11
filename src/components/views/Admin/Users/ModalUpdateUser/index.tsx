@@ -15,7 +15,6 @@ type PropsTypes = {
 const ModalUpdateUser = (props: PropsTypes) => {
   const { UpdatedUser, setUpdatedUser, setUsersData } = props;
   const session: any = useSession();
-  console.log(session);
 
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -34,7 +33,6 @@ const ModalUpdateUser = (props: PropsTypes) => {
       setLoading(false);
       setUpdatedUser({});
       const { data } = await userServices.getAllUsers();
-      console.log(data);
       setUsersData(data.data);
     } else {
       setLoading(false);
